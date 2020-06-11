@@ -10,7 +10,7 @@ def hazard_model(x,sigma,beta):
 
 class GECI_Distance():
     
-    def __init__(self, n_obs, distances, n_bins=10):
+        def __init__(self, n_obs, distances, n_bins=10):
         self.distances = distances
         self.n_bins = n_bins
         self.n_obs = n_obs
@@ -55,10 +55,13 @@ class GECI_Distance():
         return self.norm_hist, self.bins_mid_points
 
     def calculate_detection_probability(self):
+        self.calculate_histogram()
+        self.fit_detection_function()
         area, error = integrate.quad(hazard_model, 0, self.width,args=(self.sigma,self.beta))
         self.detection_probability = area/self.width
         return self.detection_probability
     
     def estimate_population(self):
+        self.calculate_detection_probability()
         self.n_total = np.sum(self.n_obs[self.distances < self.width])
         return (self.area*self.n_total)/(2*self.width*self.length*self.detection_probability)
