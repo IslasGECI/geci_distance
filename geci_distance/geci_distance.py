@@ -10,7 +10,7 @@ def hazard_model(x,sigma,beta):
 
 class GECI_Distance():
     
-        def __init__(self, n_obs, distances, n_bins=10):
+    def __init__(self, n_obs, distances, n_bins=10):
         self.distances = distances
         self.n_bins = n_bins
         self.n_obs = n_obs
