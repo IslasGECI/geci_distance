@@ -1,0 +1,13 @@
+name: Conservación de Islas
+on: [push, pull_request]
+
+jobs:
+  actions:
+    runs-on: ubuntu-18.04
+    steps:
+    - name: Copia repositorio
+      uses: actions/checkout@v2
+    - name: Construye imagen
+      run: docker build --tag islasgeci/geci_distance .
+    - name: Ejecuta objetivo principal del Makefile
+      run: docker run islasgeci/geci_distance make
