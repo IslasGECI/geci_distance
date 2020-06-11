@@ -5,15 +5,15 @@ import numpy as np
 from lmfit import Model
 from scipy import integrate
 
+def hazard_model(x,sigma,beta):
+    return (1 - np.exp(-(x/sigma)**(-beta)))
+
 class GECI_Distance():
     
     def __init__(self, n_obs, distances, n_bins=10):
         self.distances = distances
         self.n_bins = n_bins
         self.n_obs = n_obs
-   
-    def hazard_model(self,x,sigma,beta):
-        return (1 - np.exp(-(x/sigma)**(-beta)))
     
     def set_line_width(self, width):
         self.width = width
@@ -28,7 +28,7 @@ class GECI_Distance():
             self.area = area    
 
     def initialize_hazard_model(self):
-        model = Model(self.hazard_model)
+        model = Model(hazard_model)
         model.set_param_hint('sigma', value= 1, min=0)
         model.set_param_hint('beta', value= 1, min=0)
         params = model.make_params()
@@ -55,7 +55,7 @@ class GECI_Distance():
         return self.norm_hist, self.bins_mid_points
 
     def calculate_detection_probability(self):
-        area, error = integrate.quad(self.hazard_model, 0, self.width,args=(self.sigma,self.beta))
+        area, error = integrate.quad(hazard_model, 0, self.width,args=(self.sigma,self.beta))
         self.detection_probability = area/self.width
         return self.detection_probability
     

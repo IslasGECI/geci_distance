@@ -15,8 +15,8 @@ class Test_geci_distance(unittest.TestCase):
         self.N_obs_data: np.array = np.array([1,1,1,1,1,1,1,1,1,1])
 
     def test_hazard_model(self):
-        output = GECI_Distance.hazard_model(self.X, self.Sigma, self.Beta)
-        self.assertEqual(output, 0)
+        output = hazard_model(self.X, self.Sigma, self.Beta)
+        self.assertEqual(output, 0.6321205588285577)
 
 if __name__ == "__main__":
     unittest.main()
