@@ -1,4 +1,4 @@
-mutation:
+mutants:
 	mutmut run \
 		--paths-to-mutate geci_distance
 
