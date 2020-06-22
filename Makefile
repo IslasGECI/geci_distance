@@ -7,6 +7,10 @@ mutants:
 install:
 	pip install --editable .
 
+format:
+	black --check geci_distance
+	black --check tests
+
 tests: install
 	pytest --verbose
 
