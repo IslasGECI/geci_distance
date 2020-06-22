@@ -11,3 +11,5 @@ jobs:
       run: docker build --tag islasgeci/geci_distance .
     - name: Ejecuta objetivo principal del Makefile
       run: docker run islasgeci/geci_distance make
+    - name: Verifica el formato
+      run: docker run islasgeci/dummy_transformations make format
