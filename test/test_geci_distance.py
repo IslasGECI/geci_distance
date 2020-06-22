@@ -16,7 +16,7 @@ class Test_geci_distance(unittest.TestCase):
 
     def test_hazard_model(self):
         output = hazard_model(self.X, self.Sigma, self.Beta)
-        self.assertEqual(output, 0.6321205588285577)
+        self.assertAlmostEqual(output, 0.18126924)
 
 if __name__ == "__main__":
     unittest.main()
