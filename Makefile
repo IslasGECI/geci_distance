@@ -8,8 +8,8 @@ install:
 	pip install --editable .
 
 format:
-	black --check geci_distance
-	black --check tests
+	black --check -l 100 geci_distance
+	black --check -l 100 tests
 
 tests: install
 	pytest --verbose
