@@ -2,7 +2,7 @@ mutants:
 	mutmut run \
 		--paths-to-mutate geci_distance
 
-.PHONY: clean install mutation tests
+.PHONY: clean install mutants tests
 
 install:
 	pip install --editable .
