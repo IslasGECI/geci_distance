@@ -52,7 +52,6 @@ class GECI_Distance():
         hist, bins = np.histogram(self.distances, np.linspace(0, self.width, self.n_bins))
         self.norm_hist = self.normalize_pdf(hist)
         self.bins_mid_points = self.calculate_mid_points(bins)
-        return self.norm_hist, self.bins_mid_points
 
     def calculate_detection_probability(self):
         self.calculate_histogram()
