@@ -10,7 +10,7 @@ class Test_geci_distance(unittest.TestCase):
         """
         self.X: int = 10
         self.Sigma = 2
-        self.Beta: int = 0
+        self.Beta: int = 1
         self.DistancesData: np.array = np.array([1,2,3,4,5,1,2,3,10,50])
         self.N_obs_data: np.array = np.array([1,1,1,1,1,1,1,1,1,1])
 
