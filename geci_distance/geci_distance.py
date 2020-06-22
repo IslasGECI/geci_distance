@@ -38,7 +38,7 @@ class GECI_Distance:
     def calculate_mid_points(self, bins):
         return (bins[:-1] + bins[1:]) / 2
 
-    def normalize_pdf(self, pdf):
+    def normalize_histogram(self, pdf):
         return pdf / pdf[0]
 
     def fit_detection_function(self, model="hazard"):
@@ -51,7 +51,7 @@ class GECI_Distance:
 
     def calculate_histogram(self):
         hist, bins = np.histogram(self.distances, np.linspace(0, self.width, self.n_bins))
-        self.norm_hist = self.normalize_pdf(hist)
+        self.norm_hist = self.normalize_histogram(hist)
         self.bins_mid_points = self.calculate_mid_points(bins)
         return self.norm_hist, self.bins_mid_points
 
