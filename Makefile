@@ -2,7 +2,7 @@ all: mutants
 
 .PHONY: all clean format install lint mutants tests
 
-repo = $${PWD##*/}
+repo = $${PWD\#\#*/}
 
 clean:
 	rm --force .mutmut-cache
@@ -29,4 +29,3 @@ mutants:
 tests: install
 	pytest --cov=${repo} --cov-report=xml --verbose && \
 	codecov --token=18f4c788-e1a1-442b-8e15-bd0e10fa8ff1
-
