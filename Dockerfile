@@ -1,5 +1,6 @@
 FROM python:3
-
+WORKDIR /workdir
+COPY . .
 RUN pip install --upgrade pip && pip install \
     black \
     flake8 \
@@ -10,5 +11,3 @@ RUN pip install --upgrade pip && pip install \
     pytest-cov \
     pytest==5.0.1 \
     scipy
-
-WORKDIR /workdir
