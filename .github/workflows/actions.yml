@@ -8,8 +8,12 @@ jobs:
     - name: Copia repositorio
       uses: actions/checkout@v2
     - name: Construye imagen
-      run: docker build --tag islasgeci/geci_distance .
-    - name: Ejecuta objetivo principal del Makefile
-      run: docker run islasgeci/geci_distance make
+      run: docker build --tag islasgeci .
     - name: Verifica el formato
-      run: docker run islasgeci/dummy_transformations make format
+      run: docker run islasgeci make format
+    - name: Despelusamiento
+      run: docker run islasgeci make lint
+    - name: Corre pruebas
+      run: docker run islasgeci make tests
+    - name: Evalua resistencia a mutaciones
+      run: docker run islasgeci make mutants
