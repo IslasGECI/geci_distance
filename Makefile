@@ -2,7 +2,7 @@ all: mutants
 
 .PHONY: all clean format install lint mutants tests
 
-repo = $${PWD\#\#*/}
+repo := $${PWD\#\#*/}
 
 clean:
 	rm --force .mutmut-cache
