@@ -17,7 +17,7 @@ lint:
 	pylint tests
 
 tests: install
-	pytest --cov=geci_distance --cov-report=term --verbose
+	pytest --cov=geci_distance --cov-report=term --cov-report=xml --verbose
 
 clean:
 	rm --force .mutmut-cache
