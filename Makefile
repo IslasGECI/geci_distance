@@ -2,7 +2,7 @@ all: mutants
 
 .PHONY: all clean format install lint mutants tests
 
-repo := $${PWD\#\#*/}
+repo = geci_distance
 
 clean:
 	rm --force .mutmut-cache
