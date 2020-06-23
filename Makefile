@@ -13,6 +13,8 @@ format:
 lint:
 	flake8 --max-line-length 100 geci_distance
 	flake8 --max-line-length 100 tests
+	pylint geci_distance
+	pylint tests
 
 tests: install
 	pytest --cov=geci_distance --cov-report=term --verbose

@@ -8,6 +8,7 @@ RUN pip install --upgrade pip && pip install \
     mutmut \
     numpy \
     pandas \
+    pylint \
     pytest-cov \
     pytest==5.0.1 \
     scipy
