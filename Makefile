@@ -17,7 +17,8 @@ lint:
 	pylint tests
 
 tests: install
-	pytest --cov=geci_distance --cov-report=term --cov-report=xml --verbose
+	pytest --cov=geci_distance --cov-report=xml --verbose && \
+	codecov --token=18f4c788-e1a1-442b-8e15-bd0e10fa8ff1
 
 clean:
 	rm --force .mutmut-cache

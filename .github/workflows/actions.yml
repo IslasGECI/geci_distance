@@ -13,7 +13,5 @@ jobs:
       run: docker run islasgeci make format
     - name: Corre pruebas
       run: docker run islasgeci make tests
-    - name: Evalúa cobertura
-      run: docker run islasgeci codecov --token=18f4c788-e1a1-442b-8e15-bd0e10fa8ff1
     - name: Evalua resistencia a mutaciones
       run: docker run islasgeci make mutants
