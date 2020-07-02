@@ -39,12 +39,6 @@ class GECI_Distance:
         if units == "m2":
             self.area = area
 
-
-
-
-
-
-
     def fit_detection_function(self, model="hazard"):
         if model == "hazard":
             model, params = initialize_hazard_model()
