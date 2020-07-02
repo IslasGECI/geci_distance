@@ -57,7 +57,7 @@ class GECI_Distance:
     def calculate_detection_probability(self):
         self.calculate_histogram()
         self.fit_detection_function()
-        area, error = integrate.quad(hazard_model, 0, self.width, args=(self.sigma, self.beta))
+        area, _ = integrate.quad(hazard_model, 0, self.width, args=(self.sigma, self.beta))
         self.detection_probability = area / self.width
         return self.detection_probability
 
