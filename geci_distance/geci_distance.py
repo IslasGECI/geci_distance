@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-import pandas as pd
 import numpy as np
 from lmfit import Model
 from scipy import integrate
