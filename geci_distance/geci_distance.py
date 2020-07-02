@@ -8,21 +8,24 @@ from scipy import integrate
 def hazard_model(x, sigma, beta):
     return 1 - np.exp(-((x / sigma) ** (-beta)))
 
+def initialize_hazard_model():
+    model = Model(hazard_model)
+    model.set_param_hint("sigma", value=1, min=0)
+    model.set_param_hint("beta", value=1, min=0)
+    params = model.make_params()
+    return model, params
+
+def calculate_mid_points(bins):
+    return (bins[:-1] + bins[1:]) / 2
+
+def normalize_histogram(hist):
+    return hist / hist[0]
 
 class GECI_Distance:
     def __init__(self, n_obs, distances, n_bins=10):
-        self.area = None
-        self.beta = None
-        self.bins_mid_points = None
-        self.detection_probability = None
         self.distances = distances
-        self.length = None
         self.n_bins = n_bins
         self.n_obs = n_obs
-        self.n_total = None
-        self.norm_hist = None
-        self.sigma = None
-        self.width = None
 
     def set_line_width(self, width):
         self.width = width
@@ -36,26 +39,21 @@ class GECI_Distance:
         if units == "m2":
             self.area = area
 
-    def initialize_hazard_model(self):
-        model = Model(hazard_model)
-        model.set_param_hint("sigma", value=1, min=0)
-        model.set_param_hint("beta", value=1, min=0)
-        params = model.make_params()
-        return model, params
 
-    def calculate_mid_points(self, bins):
-        return (bins[:-1] + bins[1:]) / 2
 
-    def normalize_histogram(self, pdf):
-        return pdf / pdf[0]
+
+
+
 
     def fit_detection_function(self, model="hazard"):
         if model == "hazard":
-            model, params = self.initialize_hazard_model()
+            model, params = initialize_hazard_model()
             result = model.fit(self.norm_hist, params, x=self.bins_mid_points, method="nelder")
             self.sigma = result.params["sigma"].value
             self.beta = result.params["beta"].value
             return self.sigma, self.beta
+        else:
+            print("Ese modelo no está definido")
 
     def calculate_histogram(self):
         hist, bins = np.histogram(self.distances, np.linspace(0, self.width, self.n_bins))
@@ -66,7 +64,7 @@ class GECI_Distance:
     def calculate_detection_probability(self):
         self.calculate_histogram()
         self.fit_detection_function()
-        area, _ = integrate.quad(hazard_model, 0, self.width, args=(self.sigma, self.beta))
+        area, error = integrate.quad(hazard_model, 0, self.width, args=(self.sigma, self.beta))
         self.detection_probability = area / self.width
         return self.detection_probability
 
