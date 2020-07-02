@@ -11,9 +11,18 @@ def hazard_model(x, sigma, beta):
 
 class GECI_Distance:
     def __init__(self, n_obs, distances, n_bins=10):
+        self.area = None
+        self.beta = None
+        self.bins_mid_points = None
+        self.detection_probability = None
         self.distances = distances
+        self.length = None
         self.n_bins = n_bins
         self.n_obs = n_obs
+        self.n_total = None
+        self.norm_hist = None
+        self.sigma = None
+        self.width = None
 
     def set_line_width(self, width):
         self.width = width
