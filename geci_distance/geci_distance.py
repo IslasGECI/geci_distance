@@ -8,6 +8,7 @@ from scipy import integrate
 def hazard_model(x, sigma, beta):
     return 1 - np.exp(-((x / sigma) ** (-beta)))
 
+
 def initialize_hazard_model():
     model = Model(hazard_model)
     model.set_param_hint("sigma", value=1, min=0)
@@ -15,11 +16,14 @@ def initialize_hazard_model():
     params = model.make_params()
     return model, params
 
+
 def calculate_mid_points(bins):
     return (bins[:-1] + bins[1:]) / 2
 
+
 def normalize_histogram(hist):
     return hist / hist[0]
+
 
 class GECI_Distance:
     def __init__(self, n_obs, distances, n_bins=10):
