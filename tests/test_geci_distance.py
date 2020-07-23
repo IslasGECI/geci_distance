@@ -12,6 +12,7 @@ HistogramData: np.array = np.array([10, 5, 10, 2, 5, 1, 10])
 NormalizedHistogram: np.array = np.array([1, 0.5, 1, 0.2, 0.5, 0.1, 1])
 HistogramBinsLimits: np.array = np.array([3, 5, 7, 9, 11, 13, 15, 17])
 HistogramCenteredBins: np.array = np.array([4, 6, 8, 10, 12, 14, 16])
+distancia = GECI_Distance(n_obs = 1, distances = 1)
 
 
 def test_hazard_model():
@@ -41,3 +42,17 @@ def test_calculate_mid_points_output_lenght():
     lenght_histogram_limits = len(HistogramBinsLimits)
     lenght_centered_bins = len(HistogramCenteredBins)
     assert (lenght_histogram_limits - 1) == (lenght_centered_bins)
+
+def test_init_GECI_Distance():
+    assert distancia.n_bins == 10 
+    assert distancia.n_obs == 1 
+    assert distancia.n_total == None 
+    assert distancia.area == None 
+    assert distancia.beta == None
+    assert distancia.sigma == None
+    assert distancia.bins_mid_points == None
+    assert distancia.detection_probability == None
+    assert distancia.distances == 1
+    assert distancia.length == None
+    assert distancia.width == None
+    assert distancia.norm_hist == None
