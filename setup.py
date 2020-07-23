@@ -2,7 +2,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="GECI_Distance",
+    name="geci_distance",
     version="0.1.0",
     packages=["geci_distance"],
     author="Fernando Alvarez",
