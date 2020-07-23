@@ -19,6 +19,14 @@ def test_hazard_model():
     assert pytest.approx(output) == 0.18126924
 
 
+def test_initialize_hazard_model():
+    obteined_model, obteined_parameters = initialize_hazard_model()
+    assert obteined_parameters["sigma"].value == 1
+    assert obteined_parameters["sigma"].min == 0
+    assert obteined_parameters["beta"].value == 1
+    assert obteined_parameters["beta"].min == 0
+
+
 def test_normalize_histogram():
     obtained_histogram = normalize_histogram(HistogramData)
     np.testing.assert_array_equal(obtained_histogram, NormalizedHistogram)
