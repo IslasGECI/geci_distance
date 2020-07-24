@@ -12,7 +12,7 @@ HistogramData: np.array = np.array([10, 5, 10, 2, 5, 1, 10])
 NormalizedHistogram: np.array = np.array([1, 0.5, 1, 0.2, 0.5, 0.1, 1])
 HistogramBinsLimits: np.array = np.array([3, 5, 7, 9, 11, 13, 15, 17])
 HistogramCenteredBins: np.array = np.array([4, 6, 8, 10, 12, 14, 16])
-distancia = GECI_Distance(n_obs = 1, distances = 1)
+distancia = GECI_Distance(n_obs=1, distances=1)
 
 
 def test_hazard_model():
