@@ -58,3 +58,13 @@ def test_init_GECI_Distance():
     assert distancia.width == None
     assert distancia.norm_hist == None
 
+
+def test_property_GECI_Distance():
+    distancia.set_line_length(4)
+    assert distancia.length == 4
+    distancia.set_line_width(4)
+    assert distancia.width == 4
+    distancia.set_study_area(area=1)
+    assert distancia.area == 1_000_000
+    distancia.set_study_area(area=1, units="m2")
+    assert distancia.area == 1
