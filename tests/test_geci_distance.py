@@ -43,11 +43,12 @@ def test_calculate_mid_points_output_lenght():
     lenght_centered_bins = len(HistogramCenteredBins)
     assert (lenght_histogram_limits - 1) == (lenght_centered_bins)
 
+
 def test_init_GECI_Distance():
-    assert distancia.n_bins == 10 
-    assert distancia.n_obs == 1 
-    assert distancia.n_total == None 
-    assert distancia.area == None 
+    assert distancia.n_bins == 10
+    assert distancia.n_obs == 1
+    assert distancia.n_total == None
+    assert distancia.area == None
     assert distancia.beta == None
     assert distancia.sigma == None
     assert distancia.bins_mid_points == None
@@ -56,3 +57,4 @@ def test_init_GECI_Distance():
     assert distancia.length == None
     assert distancia.width == None
     assert distancia.norm_hist == None
+
