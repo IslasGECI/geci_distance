@@ -13,6 +13,10 @@ clean:
 	rm --force .coverage
 	rm --force coverage.xml
 
+coverage: install
+	pytest --cov=${repo} --cov-report=xml --verbose && \
+	codecov --token=18f4c788-e1a1-442b-8e15-bd0e10fa8ff1
+
 format:
 	black --check --line-length 100 ${repo}
 	black --check --line-length 100 tests
@@ -30,5 +34,4 @@ mutants:
 	mutmut run --paths-to-mutate ${repo}
 
 tests: install
-	pytest --cov=${repo} --cov-report=xml --verbose && \
-	codecov --token=18f4c788-e1a1-442b-8e15-bd0e10fa8ff1
+	pytest --verbose
