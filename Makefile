@@ -1,6 +1,6 @@
 all: mutants
 
-.PHONY: all clean format install lint mutants tests
+.PHONY: all clean coverage format install lint mutants tests
 
 repo = geci_distance
 
