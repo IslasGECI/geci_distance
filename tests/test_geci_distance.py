@@ -1,6 +1,12 @@
 import pytest
 import numpy as np
-from geci_distance import *
+from geci_distance import (
+    GECI_Distance,
+    hazard_model,
+    initialize_hazard_model,
+    normalize_histogram,
+    calculate_mid_points,
+)
 
 
 X: int = 10
@@ -47,16 +53,16 @@ def test_calculate_mid_points_output_lenght():
 def test_init_GECI_Distance():
     assert distancia.n_bins == 10
     assert distancia.n_obs == 1
-    assert distancia.n_total == None
-    assert distancia.area == None
-    assert distancia.beta == None
-    assert distancia.sigma == None
-    assert distancia.bins_mid_points == None
-    assert distancia.detection_probability == None
+    assert distancia.n_total is None
+    assert distancia.area is None
+    assert distancia.beta is None
+    assert distancia.sigma is None
+    assert distancia.bins_mid_points is None
+    assert distancia.detection_probability is None
     assert distancia.distances == 1
-    assert distancia.length == None
-    assert distancia.width == None
-    assert distancia.norm_hist == None
+    assert distancia.length is None
+    assert distancia.width is None
+    assert distancia.norm_hist is None
 
 
 def test_property_GECI_Distance():
