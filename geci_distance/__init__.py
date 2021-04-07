@@ -1,1 +1,1 @@
-from .geci_distance import *
+from .geci_distance import *  # noqa
