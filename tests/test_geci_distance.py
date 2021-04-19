@@ -1,5 +1,6 @@
 import pytest
 import numpy as np
+from lmfit import Model
 from geci_distance import (
     GECI_Distance,
     hazard_model,
@@ -74,3 +75,7 @@ def test_property_GECI_Distance():
     assert distancia.area == 1_000_000
     distancia.set_study_area(area=1, units="m2")
     assert distancia.area == 1
+
+
+def test_fit_detection_function_hazard():
+    assert False
