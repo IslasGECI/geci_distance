@@ -78,3 +78,13 @@ def test_property_GECI_Distance():
     assert distancia.area == 1_000_000
     distancia.set_study_area(area=1, units="m2")
     assert distancia.area == 1
+
+
+class Test_GECI_Distance:
+    def setup(self):
+        self.project = GECI_Distance(n_obs=[10, 12], distances=[1, 1])
+        self.project.set_line_width(100)
+
+    def test_fit_detection_function_hazard(self):
+        self.project.calculate_histogram()
+        self.project.fit_detection_function_hazard()
