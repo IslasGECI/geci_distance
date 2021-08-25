@@ -83,8 +83,12 @@ def test_property_GECI_Distance():
 class Test_GECI_Distance:
     def setup(self):
         self.project = GECI_Distance(n_obs=[10, 12], distances=[1, 1])
-        self.project.set_line_width(100)
+        self.project.set_line_width(9)
 
     def test_fit_detection_function_hazard(self):
-        self.project.calculate_histogram()
-        self.project.fit_detection_function_hazard()
+        norm_hist, bins_mid_points = self.project.calculate_histogram()
+        expected_bins_mid_points = np.array([0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5])
+        np.testing.assert_array_equal(expected_bins_mid_points, bins_mid_points)
+        sigma, beta = self.project.fit_detection_function_hazard()
+        assert sigma is not None
+        assert beta is not None
