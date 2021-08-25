@@ -14,8 +14,6 @@ Sigma = 2
 Beta: int = 1
 DistancesData: np.array = np.array([1, 2, 3, 4, 5, 1, 2, 3, 10, 50])
 N_obs_data: np.array = np.array([1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
-HistogramData: np.array = np.array([10, 5, 10, 2, 5, 1, 10])
-NormalizedHistogram: np.array = np.array([1, 0.5, 1, 0.2, 0.5, 0.1, 1])
 HistogramBinsLimits: np.array = np.array([3, 5, 7, 9, 11, 13, 15, 17])
 HistogramCenteredBins: np.array = np.array([4, 6, 8, 10, 12, 14, 16])
 distancia = GECI_Distance(n_obs=1, distances=1)
@@ -35,7 +33,13 @@ def test_initialize_hazard_model():
 
 
 def test_normalize_histogram():
+    HistogramData: np.array = np.array([10, 5, 10, 2, 5, 1, 10])
     obtained_histogram = normalize_histogram(HistogramData)
+    NormalizedHistogram: np.array = np.array([1, 0.5, 1, 0.2, 0.5, 0.1, 1])
+    np.testing.assert_array_equal(obtained_histogram, NormalizedHistogram)
+    HistogramData: np.array = np.array([10, 5, 20, 2, 5, 1, 10])
+    obtained_histogram = normalize_histogram(HistogramData)
+    NormalizedHistogram: np.array = np.array([0.5, 0.25, 1, 0.1, 0.25, 0.05, 0.5])
     np.testing.assert_array_equal(obtained_histogram, NormalizedHistogram)
 
 
