@@ -22,7 +22,7 @@ def calculate_mid_points(bins):
 
 
 def normalize_histogram(hist):
-    return hist / hist[0]
+    return hist / max(hist)
 
 
 class GECI_Distance:
